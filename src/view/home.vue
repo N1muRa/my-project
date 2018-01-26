@@ -1,13 +1,16 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header><header-tab></header-tab></el-header>
     <el-main><router-view/></el-main>
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
 
 <script>
+import HeaderTab from '../components/header'
+
 export default {
+  components: {HeaderTab},
   name: 'home'
 }
 </script>
@@ -21,7 +24,7 @@ export default {
   }
 
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: #E9EEF3;
     color: #333;
     text-align: center;
     line-height: 200px;
