@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueResource from 'vue-resource'
 // import router from './router'
 import VueRouter from 'vue-router'
 import routers from './routers'
@@ -151,6 +152,8 @@ Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(VueResource)
+// Vue.use(VueAxios, axios)
 
 const router = new VueRouter({
   mode: 'history',
