@@ -3,9 +3,9 @@
     <pull-to :top-load-method="refresh" :bottom-load-method="refresh">
       <ul v-for="item in DataList" v-bind:key="item.id">
         <li class="list">
-          <h2><span class="news-list-title">{{item.NewsTitle}}</span></h2>
+          <h2><span class="news-list-title">{{item.name}}</span></h2>
           <p></p>
-          <div class="news-list-source"><span>{{item.Author}}</span></div><div class="news-list-date"><span class="news-list-date-span">{{item.Date.substring(0,10)}}</span></div>
+          <div class="news-list-source"><span>{{item.id}}</span></div><div class="news-list-date"><span class="news-list-date-span">{{item.age}}</span></div>
         </li>
       </ul>
     </pull-to>
@@ -27,9 +27,9 @@ export default {
   },
   methods: {
     getNewsList () {
-      this.$http.get('/api/news/getNewsList').then((response) => {
+      this.$http.get('/api/user/getUser').then((response) => {
         this.DataList = response.body
-        console.log(response.body[1].Date.substring(0, 10))
+        // console.log(response.body[1])
       })
     },
     refresh (loaded) {

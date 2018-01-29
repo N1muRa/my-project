@@ -1,11 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <form>
-      <input type="text" name="username" v-model="userName"> <br>
-      <input type="text" name="age" v-model="age"> <br>
-      <a href="javascript:;" @click="addUser">提交</a>
-    </form>
+    <!--<h1>{{ msg }}</h1>-->
+    <el-form :inline="true" :model="formInline" :class="demo-form-inline" style="padding-top: 10px">
+      <el-form-item label="username">
+        <el-input v-model="formInline.username" placeholder="username"></el-input>
+      </el-form-item>
+      <el-form-item label="age">
+        <el-input v-model="formInline.age" placeholder="age"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="addUser">Add</el-button>
+      </el-form-item>
+    </el-form>
+    <el-table
+    :data="tableData"
+    style="height: 50%"
+    text-align="center">
+      <el-table-column
+        label="id" prop="id">
+      </el-table-column>
+      <el-table-column
+        label="name" prop="name">
+      </el-table-column>
+      <el-table-column
+        label="age" prop="age">
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 <script>
@@ -14,21 +34,42 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      userName: '',
-      age: ''
+      formInline: {
+        username: '',
+        age: ''
+      },
+      tableData: []
     }
   },
   methods: {
     addUser () {
-      var name = this.userName
-      var age = this.age
+      var name = this.formInline.username
+      var age = this.formInline.age
       this.$http.post('/api/user/addUser', {
         username: name,
         age: age
       }, {}).then((response) => {
-        console.log(response)
+        this.getUser()
+      })
+    },
+    getUser () {
+      this.$http.get('/api/user/getUser').then((response) => {
+        let body = response.body
+        var data = []
+        let _this = this
+        for (let i = 0; i < body.length; i++) {
+          var user = {}
+          user.id = body[i].id
+          user.name = body[i].name
+          user.age = body[i].age
+          data[i] = user
+        }
+        _this.tableData = data
       })
     }
+  },
+  created () {
+    this.getUser()
   }
 }
 </script>

@@ -1,8 +1,9 @@
 import Home from './view/home'
 import Hello from './components/helloWorld'
 import MineOrder from './components/order'
-import Avue from './components/A'
+import User from './components/User'
 import Bvue from './components/B'
+import news from './components/news'
 
 const routers = [
   {
@@ -18,12 +19,16 @@ const routers = [
         component: MineOrder
       },
       {
-        path: 'avue',
-        component: Avue
+        path: 'user',
+        component: User
       },
       {
         path: 'bvue',
         component: Bvue
+      },
+      {
+        path: 'news',
+        component: news
       }
     ]
   }

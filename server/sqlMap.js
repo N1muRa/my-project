@@ -3,7 +3,12 @@ var sqlMap = {
   // 用户
   user: {
     add: 'insert into user(name, age) values (?, ?)',
-    select_name: 'SELECT * from user where username = ?' // 用username进行查询
+    select_name: 'SELECT * from user where username = ?', // 用username进行查询
+    select_user: 'SELECT * from user'
+  },
+  // 新闻
+  news: {
+    getNewsList: 'SELECT * FROM tb_news'
   }
 }
 
