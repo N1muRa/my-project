@@ -4,6 +4,7 @@ import MineOrder from './components/order'
 import User from './components/User'
 import Bvue from './components/B'
 import news from './components/news'
+import detail from './view/detail'
 
 const routers = [
   {
@@ -31,6 +32,11 @@ const routers = [
         component: news
       }
     ]
+  },
+  {
+    path: '/detail',
+    name: 'detail',
+    component: detail
   }
 ]
 export default routers

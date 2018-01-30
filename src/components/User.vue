@@ -3,9 +3,14 @@
     <pull-to :top-load-method="refresh" :bottom-load-method="refresh">
       <ul v-for="item in DataList" v-bind:key="item.id">
         <li class="list">
-          <h2><span class="news-list-title">{{item.name}}</span></h2>
+          <h4 style="font-weight: lighter"><span class="news-list-title">{{item.name}}</span></h4>
           <p></p>
-          <div class="news-list-source"><span>{{item.id}}</span></div><div class="news-list-date"><span class="news-list-date-span">{{item.age}}</span></div>
+          <div class="news-list-source">
+            <span>{{item.id}}</span>
+          </div>
+          <div class="news-list-date">
+            <span class="news-list-date-span">{{item.age}}</span>
+          </div>
         </li>
       </ul>
     </pull-to>
@@ -29,7 +34,7 @@ export default {
     getNewsList () {
       this.$http.get('/api/user/getUser').then((response) => {
         this.DataList = response.body
-        // console.log(response.body[1])
+        // console.log(response.body[1].Date.substring(0, 10))
       })
     },
     refresh (loaded) {
@@ -68,12 +73,14 @@ export default {
     /*margin-right: -70%;*/
     margin-left:5%;
     font-size: 12px;
+    margin-bottom: 1px;
   }
   .news-list-date{
     padding-left: 80%;
     /*float: left;*/
     /*width: 100%;*/
     font-size: 12px;
+    margin-bottom: 5px;
   }
   .news-list-date-span{
     margin-right: 0%;

@@ -1,6 +1,9 @@
 <template>
+
   <el-container direction="vertical">
-    <el-header class="el-header-home" style="height: 10%"><header-tab></header-tab></el-header>
+    <el-header class="el-header-home" style="height: 10%">
+      <header-tab></header-tab>
+    </el-header>
     <el-main class="el-main-home" style="padding: 0"><router-view/></el-main>
     <!--<el-footer class="el-footer-home" style="height: 10%">Footer</el-footer>-->
   </el-container>
@@ -16,13 +19,14 @@ export default {
 </script>
 
 <style >
+
   .el-header-home {
     background-color: #B3C0D1;
     color: #333;
     text-align: center;
     line-height: 60px;
-    display: flex;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
     position: fixed;
     top: 0;
     width: 100%;
