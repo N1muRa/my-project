@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!--<h1>{{ msg }}</h1>-->
-    <el-form :inline="true" :model="formInline" style="padding-top: 10px">
+    <el-form :inline="true" :model="formInline" style="padding-top: 10px; margin-left: 10px">
       <el-form-item label="username">
         <el-input v-model="formInline.username" placeholder="username"></el-input>
       </el-form-item>

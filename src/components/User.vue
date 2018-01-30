@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-    <pull-to :top-load-method="refresh" :bottom-load-method="refresh">
-      <ul v-for="item in DataList" v-bind:key="item.id">
+    <!--<pull-to :top-load-method="refresh" :bottom-load-method="loadMore">-->
+      <ul v-for="item in SubData" v-bind:key="item.id">
         <li class="list">
           <h4 style="font-weight: lighter"><span class="news-list-title">{{item.name}}</span></h4>
           <p></p>
@@ -13,7 +13,7 @@
           </div>
         </li>
       </ul>
-    </pull-to>
+    <!--</pull-to>-->
   </div>
 </template>
 
@@ -24,7 +24,9 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      DataList: []
+      DataList: [],
+      SubData: [],
+      curPage: 1
     }
   },
   components: {
@@ -33,13 +35,42 @@ export default {
   methods: {
     getNewsList () {
       this.$http.get('/api/user/getUser').then((response) => {
-        this.DataList = response.body
-        // console.log(response.body[1].Date.substring(0, 10))
+        this.SubData = response.body
+        // this.DataList = response.body
+        for (let i in response.body) {
+          if (i > 9) {
+            break
+          }
+          this.DataList[i] = response.body[i]
+        }
+        // console.log(this.DataList)
+        // this.SubData = response.body
+        console.log(this.SubData)
       })
     },
     refresh (loaded) {
       this.getNewsList()
       loaded('done')
+    },
+    loadMore (loaded) {
+      setTimeout(() => {
+        var curPage = this.curPage
+        var flag = false
+        for (let i = curPage * 10; i < (curPage + 1) * 10; i++) {
+          if (this.SubData[i] == null) {
+            break
+          }
+          this.DataList[i] = this.SubData[i]
+          flag = true
+        }
+        if (flag) {
+          curPage++
+        }
+        console.log(this.DataList)
+        this.curPage = curPage
+        console.log(this.curPage)
+        loaded('done')
+      }, 500)
     }
   },
   created () {

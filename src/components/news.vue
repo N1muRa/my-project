@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <pull-to :top-load-method="refresh" :bottom-load-method="refresh">
+    <pull-to :top-load-method="refresh" :bottom-load-method="loadMore">
       <ul v-for="item in DataList" v-bind:key="item.id">
         <li class="list" @click="GoDetail(item)">
           <el-row style="margin-top: -10px">
@@ -37,7 +37,9 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      DataList: []
+      DataList: [],
+      SubDataList: [],
+      curPage: 0
     }
   },
   components: {
@@ -47,8 +49,10 @@ export default {
     getNewsList () {
       this.$http.get('/api/news/getNewsList').then((response) => {
         this.DataList = response.body
-        console.log(response.body[1].Date.substring(0, 10))
       })
+    },
+    loadMore (loaded) {
+      loaded('done')
     },
     refresh (loaded) {
       this.getNewsList()
@@ -62,12 +66,6 @@ export default {
         params: {
           name: 'item',
           dataObj: item
-          // ID: item.ID,
-          // Author: item.Author,
-          // Content: item.Content,
-          // Date: item.Date.substring(0, 10),
-          // NaviContent: item.NaviContent,
-          // NewsTitle: item.NewsTitle
         }
       })
     }
