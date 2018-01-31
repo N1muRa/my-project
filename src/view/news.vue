@@ -4,7 +4,8 @@
       <ul v-for="item in DataList" v-bind:key="item.id">
         <li class="list" @click="GoDetail(item)">
           <el-row style="margin-top: -10px">
-            <el-col :span="4"><div class="grid-content" style="margin-left: 5px;margin-top: 0;">
+            <el-col :span="4" style="height: 100%"><div class="grid-content" style="margin-left: 5px; ">
+              <!--<img src="../assets/llogo.png" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; width: 100%; margin: auto">-->
               <img src="../assets/llogo.png" height="60px"/>
             </div></el-col>
             <el-col :span="14"><div class="grid-content">

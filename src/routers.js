@@ -1,9 +1,9 @@
 import Home from './view/home'
 import Hello from './components/helloWorld'
 import MineOrder from './components/order'
-import User from './components/User'
+import User from './view/User'
 import Bvue from './components/B'
-import news from './components/news'
+import news from './view/news'
 import detail from './view/detail'
 
 const routers = [
@@ -13,11 +13,11 @@ const routers = [
     children: [
       {
         path: '',
-        component: Hello
+        component: news
       },
       {
-        path: 'order',
-        component: MineOrder
+        path: 'hello',
+        component: Hello
       },
       {
         path: 'user',
@@ -30,6 +30,10 @@ const routers = [
       {
         path: 'news',
         component: news
+      },
+      {
+        path: 'order',
+        component: MineOrder
       }
     ]
   },

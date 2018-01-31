@@ -1,19 +1,19 @@
 <template>
-
   <el-container direction="vertical">
-    <el-header class="el-header-home" style="height: 10%">
-      <header-tab></header-tab>
+    <el-header class="el-header-home" style="height: 10%; padding-left: 0; padding-right: 0;">
+      <nav-tab></nav-tab>
     </el-header>
     <el-main class="el-main-home" style="padding: 0"><router-view/></el-main>
-    <!--<el-footer class="el-footer-home" style="height: 10%">Footer</el-footer>-->
   </el-container>
 </template>
 
 <script>
-import HeaderTab from '../components/header'
+import NavTab from '../components/nav'
 
 export default {
-  components: {HeaderTab},
+  components: {
+    NavTab
+  },
   name: 'home'
 }
 </script>
@@ -25,8 +25,6 @@ export default {
     color: #333;
     text-align: center;
     line-height: 60px;
-    /*display: flex;*/
-    /*justify-content: space-around;*/
     position: fixed;
     top: 0;
     width: 100%;

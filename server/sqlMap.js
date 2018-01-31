@@ -9,6 +9,11 @@ var sqlMap = {
   // 新闻
   news: {
     getNewsList: 'SELECT * FROM tb_news'
+  },
+  // channels
+  channels: {
+    channels: 'select channel from tb_channel',
+    news: 'select * from tb_news'
   }
 }
 

@@ -6,8 +6,10 @@ import VueResource from 'vue-resource'
 // import router from './router'
 import VueRouter from 'vue-router'
 import routers from './routers'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import store from './vuex/store'
+// import Vuex from 'vuex'
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
 
 import {
   Pagination,
@@ -155,6 +157,7 @@ Vue.prototype.$message = Message
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VueResource)
+// Vue.use(Vuex)
 // Vue.use(VueAxios, axios)
 // Vue.prototype.$http = axios
 
@@ -167,6 +170,7 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   // components: { App },
   // template: '<App/>'
   render: h => h(App)

@@ -1,5 +1,6 @@
 const userApi = require('./api/userApi')
 const newsApi = require('./api/newsApi')
+const channelApi = require('./api/channelApi')
 
 const fs = require('fs')
 const path = require('path')
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 // 后端api路由
 app.use('/api/news', newsApi)
 app.use('/api/user', userApi)
+app.use('./api/channel', channelApi)
 
 // 监听端口
 app.listen(3000)
