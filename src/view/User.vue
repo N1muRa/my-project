@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
     <!--<pull-to :top-load-method="refresh" :bottom-load-method="loadMore">-->
-      <ul v-for="item in SubData" v-bind:key="item.id">
+      <ul v-for="user in SubData" v-bind:key="user.id">
         <li class="list">
-          <h4 style="font-weight: lighter"><span class="news-list-title">{{item.name}}</span></h4>
+          <h4 style="font-weight: lighter"><span class="news-list-title">{{user.name}}</span></h4>
           <p></p>
           <div class="news-list-source">
-            <span>{{item.id}}</span>
+            <span>{{user.id}}</span>
           </div>
           <div class="news-list-date">
-            <span class="news-list-date-span">{{item.age}}</span>
+            <span class="news-list-date-span">{{user.age}}</span>
           </div>
         </li>
       </ul>

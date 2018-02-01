@@ -1,10 +1,12 @@
 import Home from './view/home'
-import Hello from './components/helloWorld'
-import MineOrder from './components/order'
+import Hello from './components/Table'
+import MineOrder from './view/order'
 import User from './view/User'
 import Bvue from './components/B'
 import news from './view/news'
 import detail from './view/detail'
+import Echart from './view/echart'
+import Candlestick from './view/Candlestick'
 
 const routers = [
   {
@@ -34,6 +36,14 @@ const routers = [
       {
         path: 'order',
         component: MineOrder
+      },
+      {
+        path: 'echart',
+        component: Echart
+      },
+      {
+        path: 'candlestick',
+        component: Candlestick
       }
     ]
   },

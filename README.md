@@ -70,3 +70,8 @@ node index  (server文件夹下)
 ```
 cnpm install vue-pull-to --save
 ```
+
+6).安装ECharts
+```
+cnpm install echarts --save
+```

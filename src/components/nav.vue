@@ -4,10 +4,10 @@
   <el-menu router :default-active="$route.path" style="display: flex;overflow-x:  scroll;overflow-y:  hidden;border-bottom-width: 0;" mode="horizontal" @select="handleSelect" background-color="#B3C0D1">
     <el-menu-item index="/user">User</el-menu-item>
     <el-menu-item index="/news">News</el-menu-item>
-    <el-menu-item index="/hello">Home</el-menu-item>
-    <el-menu-item index="/order">E</el-menu-item>
-    <el-menu-item index="">F</el-menu-item>
-    <el-menu-item index="">G</el-menu-item>
+    <el-menu-item index="/hello">Table</el-menu-item>
+    <el-menu-item index="/order">Vuex</el-menu-item>
+    <el-menu-item index="/echart">Echart</el-menu-item>
+    <el-menu-item index="/candlestick">Candlestick</el-menu-item>
     <el-menu-item index="">H</el-menu-item>
     <el-menu-item index="">I</el-menu-item>
     <el-menu-item index="">J</el-menu-item>
@@ -32,7 +32,7 @@ export default {
   },
   created () {
     this.$store.dispatch('channelsAction')
-    this.$store.dispatch('acGetData', '头条')
+    this.$store.dispatch('getDataAction', '头条')
     this.$store.commit('loading', true)
   },
   computed: {

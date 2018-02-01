@@ -23,6 +23,9 @@ const mutations = {
   reduce (state) {
     state.count -= 1
   },
+  reduceN (state, n) {
+    state.count -= n
+  },
   muChannels (state, channels) {
     state.channels = channels
   },
@@ -58,21 +61,21 @@ const actions = {
     commit('reduce')
   },
   channelsAction ({commit, state}) {
-    return new Promise((resolve, reject) => {
-      this.$http.get('/api/channel').then(res => {
-        commit('muChannels', res.data.result)
-      })
-      resolve()
-    })
+    // return new Promise((resolve, reject) => {
+    //   this.$http.get('/api/channel').then(res => {
+    //     commit('muChannels', res.data.result)
+    //   })
+    //   resolve()
+    // })
   },
   getDataAction ({commit, state}, channel) {
-    return new Promise((resolve, reject) => {
-      this.$http.get('/api/channel/' + channel).then(res => {
-        commit('muGetData', res.data.result.list)
-        state.load = false
-      })
-      resolve()
-    })
+    // return new Promise((resolve, reject) => {
+    //   this.$http.get('/api/channel/' + channel).then(res => {
+    //     commit('muGetData', res.data.result.list)
+    //     state.load = false
+    //   })
+    //   resolve()
+    // })
   }
 }
 

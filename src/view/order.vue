@@ -4,8 +4,8 @@
     <hr/>
     <h3>{{$store.state.count}}</h3>
     <p>
-      <button @click="add">+</button>
-      <button @click="reduce">-</button>
+      <button @click="addN(10)">+</button>
+      <button @click="reduce(10)">-</button>
     </p>
     <p>
       <button @click="addAction">+</button>
@@ -35,7 +35,7 @@ export default {
     // ...mapActions(['addAction', 'reduceAction']),
   },
   methods: {
-    ...mapMutations(['add', 'reduce']),
+    ...mapMutations(['addN', 'reduce']),
     ...mapActions(['addAction', 'reduceAction'])
   }
 }

@@ -14,16 +14,26 @@
     </el-form>
     <el-table
     :data="tableData"
-    style="height: 50%"
+    border
+    height="250"
     text-align="center">
       <el-table-column
-        label="id" prop="id">
+        label="id" prop="id" fixed="left">
       </el-table-column>
       <el-table-column
         label="name" prop="name">
       </el-table-column>
       <el-table-column
         label="age" prop="age">
+      </el-table-column>
+      <el-table-column
+        label="column1" prop="column1">
+      </el-table-column>
+      <el-table-column
+        label="column2" prop="column2">
+      </el-table-column>
+      <el-table-column
+        label="column3" prop="column3" >
       </el-table-column>
     </el-table>
   </div>
@@ -62,6 +72,9 @@ export default {
           user.id = body[i].id
           user.name = body[i].name
           user.age = body[i].age
+          user.column1 = body[i].column1
+          user.column2 = body[i].column2
+          user.column3 = body[i].column3
           data[i] = user
         }
         _this.tableData = data

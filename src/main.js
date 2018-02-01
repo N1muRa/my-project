@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import VueResource from 'vue-resource'
+import echarts from 'echarts'
 // import router from './router'
 import VueRouter from 'vue-router'
 import routers from './routers'
@@ -153,6 +154,7 @@ Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
+Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
