@@ -19,11 +19,11 @@ var jsonWrite = function (res, ret) {
   }
 }
 
-// 获取channel列表接口---未完成
-router.get('', (req, res) => {
-  var sql = $sql.news.getNewsList
-  // console.log(sql)
-  conn.query(sql, function (err, result) {
+// 获取sample data api
+router.get('/getSampleData', (req, res) => {
+  var sql = $sql.sample.get_sample_data
+  console.log(sql + '!!!!!!!!!!!!!!!!!!!!!!')
+  conn.query(sql, '', function (err, result) {
     if (err) {
       console.log(err)
     } else if (result) {
@@ -33,10 +33,25 @@ router.get('', (req, res) => {
   })
 })
 
-// 获取News data接口——不用
-router.get('/News', (req, res) => {
-  var sql = $sql.channels.news
-  // console.log(sql)
+// 增加数据接口
+router.post('/addData', (req, res) => {
+  var sql = $sql.sample.add_sample_data
+  var params = req.body
+  console.log(params)
+  conn.query(sql, [params.date, params.open, params.close, params.lowest, params.highest], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+
+// macro data api
+router.get('/getMacroData', (req, res) => {
+  var sql = $sql.sample.get_macro_data
+  console.log(sql + '!!!!!!!!!!!!!!!!!!!!!!')
   conn.query(sql, '', function (err, result) {
     if (err) {
       console.log(err)

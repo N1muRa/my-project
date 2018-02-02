@@ -1,5 +1,5 @@
 import Home from './view/home'
-import Hello from './components/Table'
+import Hello from './view/Table'
 import MineOrder from './view/order'
 import User from './view/User'
 import Bvue from './components/B'

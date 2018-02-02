@@ -9,7 +9,7 @@ import VueRouter from 'vue-router'
 import routers from './routers'
 import store from './vuex/store'
 // import Vuex from 'vuex'
-// import axios from 'axios'
+import axios from 'axios'
 // import VueAxios from 'vue-axios'
 
 import {
@@ -155,6 +155,7 @@ Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
 Vue.prototype.$echarts = echarts
+Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)

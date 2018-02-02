@@ -15,25 +15,30 @@
     <el-table
     :data="tableData"
     border
-    height="250"
     text-align="center">
       <el-table-column
-        label="id" prop="id" fixed="left">
+        label="指标代码" prop="indexCode" fixed="left">
       </el-table-column>
       <el-table-column
-        label="name" prop="name">
+        label="指标名称" prop="indexName">
       </el-table-column>
       <el-table-column
-        label="age" prop="age">
+        label="行业名称" prop="tradeName">
       </el-table-column>
       <el-table-column
-        label="column1" prop="column1">
+        label="信息来源" prop="informationSource">
       </el-table-column>
       <el-table-column
-        label="column2" prop="column2">
+        label="单位" prop="unit">
       </el-table-column>
       <el-table-column
-        label="column3" prop="column3" >
+        label="指标数据" prop="indexData" >
+      </el-table-column>
+      <el-table-column
+        label="数据披露频率" prop="frequency" >
+      </el-table-column>
+      <el-table-column
+        label="发布日期" prop="relaseDate" >
       </el-table-column>
     </el-table>
   </div>
@@ -43,7 +48,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: ' I ',
       formInline: {
         username: '',
         age: ''
@@ -53,14 +58,14 @@ export default {
   },
   methods: {
     addUser () {
-      var name = this.formInline.username
-      var age = this.formInline.age
-      this.$http.post('/api/user/addUser', {
-        username: name,
-        age: age
-      }, {}).then((response) => {
-        this.getUser()
-      })
+      // var name = this.formInline.username
+      // var age = this.formInline.age
+      // this.$http.post('/api/user/addUser', {
+      //   username: name,
+      //   age: age
+      // }, {}).then((response) => {
+      //   this.getUser()
+      // })
     },
     getUser () {
       this.$http.get('/api/user/getUser').then((response) => {
@@ -79,10 +84,31 @@ export default {
         }
         _this.tableData = data
       })
+    },
+    getMacroData () {
+      this.$http.get('/api/sample/getMacroData').then((response) => {
+        let body = response.body
+        var data = []
+        let _this = this
+        for (let i = 0; i < body.length; i++) {
+          var user = {}
+          user.indexCode = body[i].indexCode
+          user.indexName = body[i].indexName
+          user.tradeName = body[i].tradeName
+          user.informationSource = body[i].informationSource
+          user.unit = body[i].unit
+          user.indexData = body[i].indexData
+          user.frequency = body[i].frequency
+          user.relaseDate = body[i].relaseDate.substring(0, 10)
+          data[i] = user
+        }
+        _this.tableData = data
+      })
     }
   },
   created () {
-    this.getUser()
+    // this.getUser()
+    this.getMacroData()
   }
 }
 </script>
