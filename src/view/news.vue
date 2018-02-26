@@ -50,10 +50,43 @@ export default {
     getNewsList () {
       this.$http.get('/api/News').then((response) => {
         this.DataList = response.body
+        console.log(this.DataList[0])
+        var refresh = false
+        var curPage = this.curPage
+        for (let i = curPage * 10; i < (curPage + 1) * 10; i++) {
+          if (this.DataList[i] == null) {
+            break
+          }
+          this.SubDataList[i] = this.DataList[i]
+          refresh = true
+        }
+        if (refresh) {
+          curPage++
+        }
+        this.curPage = curPage
+        console.log(this.SubDataList)
+        console.log(this.curPage)
       })
     },
     loadMore (loaded) {
-      loaded('done')
+      setTimeout(() => {
+        var load = false
+        var curPage = this.curPage
+        for (let i = curPage * 10; i < (curPage + 1) * 10; i++) {
+          if (this.DataList[i] == null) {
+            break
+          }
+          this.SubDataList[i] = this.DataList[i]
+          load = true
+        }
+        console.log(this.SubDataList)
+        if (load) {
+          curPage++
+        }
+        this.curPage = curPage
+        console.log(curPage)
+        loaded('done')
+      }, 500)
     },
     refresh (loaded) {
       this.getNewsList()
