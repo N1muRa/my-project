@@ -86,7 +86,7 @@ export default {
       })
     },
     getMacroData () {
-      this.$http.get('/api/sample/getMacroData').then((response) => {
+      this.$http.get('/api/MacroData').then((response) => {
         let body = response.body
         var data = []
         let _this = this

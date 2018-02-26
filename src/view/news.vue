@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getNewsList () {
-      this.$http.get('/api/news/getNewsList').then((response) => {
+      this.$http.get('/api/News').then((response) => {
         this.DataList = response.body
       })
     },

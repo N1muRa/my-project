@@ -258,7 +258,7 @@ export default {
 
     candlestick.setOption(InitOption)
 
-    this.$http.get('/api/sample/getSampleData').then((response) => {
+    this.$http.get('/api/SampleData').then((response) => {
       let body = response.body
       for (let i = 0; i < body.length; i++) {
         let sample = []
