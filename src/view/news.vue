@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getNewsList () {
-      this.$http.get('/api/News').then((response) => {
+      this.$http.get('http://192.168.1.248/api/News').then((response) => {
         this.DataList = response.body
         console.log(this.DataList[0])
         var refresh = false

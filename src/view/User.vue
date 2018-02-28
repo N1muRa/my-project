@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     getNewsList () {
-      this.$http.get('/api/User').then((response) => {
+      this.$http.get('http://192.168.1.248/api/User').then((response) => {
         this.SubData = response.body
         // this.DataList = response.body
         for (let i in response.body) {
